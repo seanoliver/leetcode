@@ -14,22 +14,6 @@ import { TreeNode } from './typedef';
  * }
  */
 
-function buildTreeFromArray(arr: (number | null)[], index: number = 0): TreeNode | null {
-	if (index < arr.length) {
-		let node: TreeNode = new TreeNode(arr[index]);
-		node.left = buildTreeFromArray(arr, 2 * index + 1);
-		node.right = buildTreeFromArray(arr, 2 * index + 2);
-		return node;
-	}
-	return null;
-}
-
-let p: (number | null)[] = [1, 2];
-let q: (number | null)[] = [1, null, 2];
-
-let treeP = buildTreeFromArray(p);
-let treeQ = buildTreeFromArray(q);
-
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 	if (p === null && q === null) return true;
 	if (p === null || q === null) return false;
@@ -40,4 +24,23 @@ function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
 
 	return left && right;
 }
-console.log(isSameTree(treeP, treeQ));
+
+// /** Test cases for debugging */
+// function buildTreeFromArray(arr: (number | null)[], index: number = 0): TreeNode | null {
+// 	if (index < arr.length) {
+// 		let node: TreeNode = new TreeNode(arr[index]);
+// 		node.left = buildTreeFromArray(arr, 2 * index + 1);
+// 		node.right = buildTreeFromArray(arr, 2 * index + 2);
+// 		return node;
+// 	}
+// 	return null;
+// }
+
+// let p: (number | null)[] = [1, 2];
+// let q: (number | null)[] = [1, null, 2];
+
+// let treeP = buildTreeFromArray(p);
+// let treeQ = buildTreeFromArray(q);
+
+
+// console.log(isSameTree(treeP, treeQ));
