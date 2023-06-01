@@ -14,16 +14,6 @@ import { TreeNode } from "./typedef";
  * }
  */
 
-function invertTree(root: TreeNode | null): TreeNode | null {
-	if (!root) return null;
-	if (!root.left && !root.right) return root;
+function maxDepth(root: TreeNode | null): number {
 
-	let temp = root.left;
-	root.left = root.right;
-	root.right = temp;
-
-	if (root.left) invertTree(root.left);
-	if (root.right) invertTree(root.right);
-
-	return root;
-}
+};
