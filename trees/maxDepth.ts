@@ -1,4 +1,4 @@
-import { TreeNode } from "./typedef";
+import { TreeNode } from './typedef';
 
 /**
  * Definition for a binary tree node.
@@ -15,5 +15,23 @@ import { TreeNode } from "./typedef";
  */
 
 function maxDepth(root: TreeNode | null): number {
+	let depth = 1;
 
-};
+	if (!root) return 0;
+	if (!root.left && !root.right) return depth;
+
+	let leftDepth = depth;
+	let rightDepth = depth;
+
+	if (root.left) leftDepth += maxDepth(root.left);
+	if (root.right) rightDepth += maxDepth(root.right);
+
+	return leftDepth > rightDepth ? leftDepth : rightDepth;
+}
+
+/** Two line solution */
+
+function shortMaxDepth(root: TreeNode | null): number {
+	if (root === null) return 0;
+	return Math.max(shortMaxDepth(root.left), shortMaxDepth(root.right)) + 1;
+}
